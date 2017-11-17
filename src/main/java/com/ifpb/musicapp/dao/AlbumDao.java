@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -78,9 +79,10 @@ public class AlbumDao {
             BandaDao dao = new BandaDao();
             while(rs.next()){
                 Banda b = dao.getBanda(rs.getInt("banda"));
-                Estilo estilo = Estilo.valueOf(rs.getString("estilo"));
+                Estilo estilo = Estilo.valueOf(rs.getString("estilo").toUpperCase());
+                //Estilo estilo = Estilo.valueOf(Estilo.class, rs.getString("estilo"));
                 int id = rs.getInt("id");
-                Album album = new Album(id, estilo,b,LocalDate.parse(rs.getString("lancamento")));
+                Album album = new Album(id, estilo,b,toLocalDate(rs.getString("lancamento")));
                 albuns.add(album);
             }
             rs.close();
@@ -107,4 +109,11 @@ public class AlbumDao {
             Logger.getLogger(IntegranteDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private LocalDate toLocalDate(String data){
+        DateTimeFormatter formatter_1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate local = LocalDate.parse(data,formatter_1);
+        return local;
+    }
+    
 }

@@ -19,15 +19,20 @@ public class CreateCommand implements Command{
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws SQLException, ClassNotFoundException, IOException, ServletException {
-        Estilo estilo = Estilo.valueOf(req.getParameter("estilo"));
+        Estilo estilo = Estilo.valueOf(req.getParameter("estilo").toUpperCase());
         int idBanda = Integer.valueOf(req.getParameter("banda"));
+        System.out.println(idBanda);
         String lancamento = req.getParameter("lancamento");
         BandaDao bandaDao = new BandaDao();
         Banda banda = bandaDao.getBanda(idBanda);
         Album novo = new Album(estilo, banda, LocalDate.parse(lancamento));
         AlbumDao dao = new AlbumDao();
-        dao.create(novo);
-        res.sendRedirect("index.jsp");
+        if(dao.create(novo)){
+            res.sendRedirect("index.jsp");
+        }else{
+            res.sendRedirect("novo.jsp?error=1");
+        }
+        
     }
     
 }

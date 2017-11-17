@@ -20,9 +20,16 @@
           <listener-class>com.mycompany.TagLibListener</listener-class> 
       </listener>
     -->
-    <tag>
-        <name>retornaAlbuns</name>
-        <tag-class>com.ifpb.musicapp.tags.RetornaAlbuns</tag-class>
-        <body-content>empty</body-content>
-    </tag>
+  <tag>
+    <name>get</name>
+    <attribute>
+        <name>descricao</name>
+        <type>String</type>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+   
+    <tag-class>com.ifpb.musicapp.tags.Get</tag-class>
+    <body-content>empty</body-content>
+  </tag>
 </taglib>

@@ -45,13 +45,14 @@ public class BandaDao {
         try {
             initConexao();
             PreparedStatement st = con.prepareStatement("SELECT * FROM banda WHERE id=?");
+            st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             IntegranteDao dao = new IntegranteDao();
             if(rs.next()){
                 List<String> integrantes = dao.getIntegrantesBanda(id);
                 String nome = rs.getString("nome");
                 String localOrigem = rs.getString("localorigem");
-                banda = new Banda(nome, localOrigem, integrantes);
+                banda = new Banda(id , nome, localOrigem, integrantes);
             }
             rs.close();
             st.close();
