@@ -1,0 +1,22 @@
+CREATE TABLE banda(
+	id SERIAL,
+	nome VARCHAR(100),
+	localorigem VARCHAR(100),
+	PRIMARY KEY(id)
+);
+CREATE TABLE integrante(
+	id SERIAL,
+	nome VARCHAR(100),
+	banda INT,
+	FOREIGN KEY (banda) REFERENCES banda(id) ON UPDATE CASCADE ON DELETE CASCADE,
+	PRIMARY KEY(id)
+);
+CREATE TABLE album(
+	id SERIAL,
+	estilo VARCHAR(50),
+	banda INT,
+	lancamento VARCHAR(10),
+	FOREIGN KEY (banda) REFERENCES banda(id) ON UPDATE CASCADE ON DELETE CASCADE,
+	PRIMARY KEY(id)
+);
+

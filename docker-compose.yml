@@ -1,0 +1,16 @@
+version: '2'
+services:
+    postgres:
+        image: musicapp/banco
+        build: ./postgres
+        container_name: banco
+        ports:
+          - "5433:5432" 
+    web:
+        image: musicapp/web
+        build: .
+        container_name: web
+        ports:
+          - "8081:8080"
+        links:
+          - "postgres:host-banco" 
