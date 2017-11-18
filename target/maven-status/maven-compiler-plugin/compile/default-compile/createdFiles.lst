@@ -1,12 +1,13 @@
 com/ifpb/musicapp/dao/BandaDao.class
 com/ifpb/musicapp/comands/CreateCommand.class
+com/ifpb/musicapp/comands/DeleteCommand.class
+com/ifpb/musicapp/controller/FrontController.class
+com/ifpb/musicapp/comands/UpdateCommand.class
+com/ifpb/musicapp/util/Conexao.class
 com/ifpb/musicapp/model/Album.class
 com/ifpb/musicapp/dao/AlbumDao.class
-com/ifpb/musicapp/comands/DeleteCommand.class
 com/ifpb/musicapp/model/Banda.class
 com/ifpb/musicapp/model/Estilo.class
+com/ifpb/musicapp/tags/Get.class
 com/ifpb/musicapp/dao/IntegranteDao.class
-com/ifpb/musicapp/comands/UpdateCommand.class
-ConFactory/ConFactory.class
-com/ifpb/musicapp/tags/RetornaAlbuns.class
 com/ifpb/musicapp/comands/Command.class

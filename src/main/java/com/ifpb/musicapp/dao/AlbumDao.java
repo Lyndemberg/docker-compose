@@ -93,11 +93,30 @@ public class AlbumDao {
         }
         return albuns;
     }
-    
+    public Album getAlbum(int id){
+        Album a = null;
+        try {
+            initConexao();
+            PreparedStatement st = con.prepareStatement("SELECT * FROM album WHERE id=?");
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()){
+                BandaDao dao = new BandaDao();
+                Banda b = dao.getBanda(rs.getInt("banda"));
+                a = new Album(id, Estilo.valueOf(rs.getString("estilo")), b, toLocalDate(rs.getString("lancamento")));
+            }
+            rs.close();
+            st.close();
+            closeConexao();
+        } catch (SQLException ex) {
+            Logger.getLogger(AlbumDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return a;
+    }
     
     private void initConexao(){
         try {
-            con = ConFactory.ConFactory.getConnection();
+            con = com.ifpb.musicapp.util.Conexao.getConnection();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(IntegranteDao.class.getName()).log(Level.SEVERE, null, ex);
         }

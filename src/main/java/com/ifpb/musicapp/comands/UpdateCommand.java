@@ -27,8 +27,12 @@ public class UpdateCommand implements Command{
         Banda banda = bandaDao.getBanda(idBanda);
         Album at = new Album(idAlbum, estilo, banda, LocalDate.parse(lancamento));
         AlbumDao dao = new AlbumDao();
-        dao.update(at);
-        res.sendRedirect("index.jsp");
+        if(dao.update(at)){
+            res.sendRedirect("index.jsp");
+        }else{
+            res.sendRedirect("editar.jsp?id=" + idAlbum + "&error=1");
+        }
+        
     }
     
 }

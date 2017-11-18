@@ -28,6 +28,7 @@
                           <th>Estilo</th>
                           <th>Banda</th>
                           <th>Lançamento</th>
+                          <th colspan="2">Opções</th>
                       </tr>
                     </thead>
                     <tbody>  
@@ -36,12 +37,14 @@
                                 <td>${album.estilo.toString()}</td>
                                 <td>${album.banda.nome}</td>
                                 <td>${album.lancamento.toString()}</td>
+                                <td><a href="editar.jsp?id=${album.id}">Editar</a></td>
+                                <td><a href="frozen?action=Delete&id=${album.id}">Deletar</a></td>
                             </tr>
                         </c:forEach>
                     </tbody>
                 </table>
             </div>
-        
+        </div>
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>

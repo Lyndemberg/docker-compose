@@ -65,7 +65,7 @@ public class BandaDao {
 
     private void initConexao(){
         try {
-            con = ConFactory.ConFactory.getConnection();
+            con = com.ifpb.musicapp.util.Conexao.getConnection();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(IntegranteDao.class.getName()).log(Level.SEVERE, null, ex);
         }

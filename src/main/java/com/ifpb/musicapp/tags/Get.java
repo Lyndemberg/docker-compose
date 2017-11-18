@@ -13,14 +13,7 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
  */
 public class Get extends SimpleTagSupport{
     public String descricao;
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+    public int id;
     
     @Override
     public void doTag(){
@@ -34,6 +27,28 @@ public class Get extends SimpleTagSupport{
             List<Banda> bandas = dao.getAll();
             getJspContext().setAttribute("bandas", bandas);
         }
+        if(descricao.equals("perfilAlbum")){
+            AlbumDao dao = new AlbumDao();
+            Album a = dao.getAlbum(id);
+            getJspContext().setAttribute("album", a);
+        }
         
     }
+    
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 }

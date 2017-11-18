@@ -15,7 +15,7 @@
     <body>
         <m:get descricao="bandas"/>
         <div class="container">
-            <center><h3>Novo álbum</h3></center>
+            <center><h4>Novo álbum</h4></center>
             <div class="row">
                 <div class="col l4 offset-l4">
                     <form action="frozen" method="POST">
